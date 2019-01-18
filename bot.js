@@ -105,6 +105,52 @@ client.on("message", async message => {
             message.channel.sendEmbed(help); 
     }
 });
+const adminprefix = "-";
+const developers = ["495279843047374863" , "474200581163057153"];
 
+
+ client.on('message', message => {                 
+                      if (!message.content.startsWith(adminprefix)) return;
+                      var args = message.content.split(' ').slice(1);
+                      var argresult = args.join(' ');
+      if (!developers.includes(message.author.id)) return;
+                    if (message.content.startsWith(adminprefix + 'ply')) {
+      if (!developers.includes(message.author.id)) return;
+                    client.user.setGame(argresult);
+                        message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+                    } else
+                    
+                     
+                    if (message.content.startsWith(adminprefix + 'st')) {
+      if (!developers.includes(message.author.id)) return;
+                    client.user.setGame(argresult, "http://twitch.tv/SMILE");
+                        message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+                    } else
+                    
+                    if (message.content.startsWith(adminprefix + 'setname')) {
+      if (!developers.includes(message.author.id)) return;
+                      client.user.setUsername(argresult).then
+                          message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+                      return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+                    } else
+if (message.content.startsWith(adminprefix + 'setavatar')) {
+      if (!developers.includes(message.author.id)) return;
+                    client.user.setAvatar(argresult);
+                        message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+                    } else
+                    
+                    
+                    if (message.content.startsWith(adminprefix + 'wt')) {
+      if (!developers.includes(message.author.id)) return;
+                        client.user.setActivity(argresult, {type : 'watching'});
+                     message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
+                    }
+                     });
+
+
+
+client.on("error", function(err) {
+ return console.log(err);
+});
 
 client.login(process.env.BOT_TOKEN);
